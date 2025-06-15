@@ -33,7 +33,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            /* keeps text readable */
             z-index: 0;
         }
 
@@ -41,7 +40,6 @@
             position: relative;
             z-index: 1;
             background: rgba(52, 73, 94, 0.25);
-            /* MORE transparent */
             backdrop-filter: blur(15px);
             padding: 30px;
             border-radius: 20px;
@@ -135,7 +133,7 @@
         <img id="cover" class="album-art" src="img/multo.jpg" alt="Album Cover">
         <h2 id="title">Multo</h2>
         <p id="artist">Cup of Joe</p>
-        <audio id="audio" src="music/Multo.mp3"></audio>
+        <audio id="audio" preload="auto"></audio>
 
         <div class="controls">
             <div class="control-buttons">
@@ -187,6 +185,12 @@
                 }
             }
         ];
+
+        // Preload all audio files
+        playlist.forEach(track => {
+            const audioPreload = new Audio();
+            audioPreload.src = track.src;
+        });
 
         let currentTrack = 0;
 
